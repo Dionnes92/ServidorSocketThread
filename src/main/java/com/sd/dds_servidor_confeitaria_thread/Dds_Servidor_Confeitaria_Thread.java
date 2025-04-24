@@ -14,9 +14,9 @@ import java.util.Vector;
 public class Dds_Servidor_Confeitaria_Thread extends Thread {
 
     public static void main(String[] args) {
-       produtos = new Vector();
+       funcionario = new Vector();
     }
-    private static Vector produtos;
+    private static Vector funcionario;
     private Socket conexao;
     
 }
