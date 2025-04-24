@@ -4,17 +4,70 @@
  */
 package com.sd.dds_servidor_confeitaria_thread;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Vector;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Dionnes
  */
 public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Dds_Servidor_Confeitaria_Formulario
-     */
+    private static Vector funcionarios;
+    private Socket conexao;
+    Thread t;
+    Dds_ManipularArquivo ma; 
+    private static ArrayList<String> lstPalavras;
+
+    public JLabel getLbiSituacao() {
+        return LbiSituacao; 
+    }
+    public JTextField getfuncionariosConectados() {
+        return FuncionariosConectados;
+    }
+
+    public JTextArea getcampoMensagens() {
+        return campoMensagens;
+        
+    }
+       public void preencherPalavras() 
+    { 
+         
+        BufferedReader br = ma.lerArq("ListaPalavras"); 
+        if(br != null) 
+        { 
+            String texto = ""; 
+            try  
+            { 
+                while(br.ready()) 
+                {  
+                    texto = texto + br.readLine(); 
+                }           
+                ButtonSalvarMensagens.setText(texto); 
+                 
+                lstPalavras.addAll(Arrays.asList(texto.split(";"))); 
+                 
+            }  
+            catch (IOException ex)  
+            { 
+                ex.printStackTrace(); 
+            } 
+        } 
+    }
+
     public Dds_Servidor_Confeitaria_Formulario() {
         initComponents();
+        
+            ma = new Dds_ManipularArquivo(); 
+        lstPalavras = new ArrayList<String>(); 
+       // preencherPalavras();
     }
 
     /**
@@ -32,6 +85,15 @@ public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
         ButtonParar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         FuncionariosConectados = new javax.swing.JTextField();
+        campoPorta = new javax.swing.JTextField();
+        LbiSituacao = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        campoMensagens = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+        ButtonSalvarMensagens = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ListaMensagens = new javax.swing.JTextArea();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,6 +115,31 @@ public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
 
         jLabel2.setText("Funcionarios conctados:");
 
+        campoPorta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoPortaActionPerformed(evt);
+            }
+        });
+
+        campoMensagens.setColumns(20);
+        campoMensagens.setRows(5);
+        jScrollPane1.setViewportView(campoMensagens);
+
+        jLabel3.setText("Filtrar palavras:");
+
+        ButtonSalvarMensagens.setText("Salvar Mensagens");
+        ButtonSalvarMensagens.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSalvarMensagensActionPerformed(evt);
+            }
+        });
+
+        ListaMensagens.setColumns(20);
+        ListaMensagens.setRows(5);
+        jScrollPane2.setViewportView(ListaMensagens);
+
+        jLabel4.setText("Mensagens:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -63,16 +150,42 @@ public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(FuncionariosConectados, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)
-                        .addComponent(ButtonIniciar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
-                        .addComponent(ButtonParar)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(LbiSituacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campoPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                                .addComponent(ButtonIniciar)
+                                .addGap(34, 34, 34)
+                                .addComponent(ButtonParar)))
                         .addGap(59, 59, 59))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel3))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(141, 141, 141)
+                                .addComponent(ButtonSalvarMensagens)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addComponent(jScrollPane2))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,12 +194,25 @@ public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(ButtonIniciar)
-                    .addComponent(ButtonParar))
-                .addGap(48, 48, 48)
+                    .addComponent(ButtonParar)
+                    .addComponent(campoPorta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LbiSituacao)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(FuncionariosConectados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(222, Short.MAX_VALUE))
+                    .addComponent(FuncionariosConectados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ButtonSalvarMensagens)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -106,12 +232,29 @@ public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonIniciarActionPerformed
-        // TODO add your handling code here:
+        funcionarios = new Vector();
+        int porta = Integer.parseInt(campoPorta.getText());
+        t = new Dds_GerenciarConexao(this, funcionarios, porta, palavras);
+        t.start();
+        ButtonIniciar.setEnabled(false);
     }//GEN-LAST:event_ButtonIniciarActionPerformed
 
     private void ButtonPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPararActionPerformed
-        // TODO add your handling code here:
+        t.interrupt();
+        FuncionariosConectados.setText("");
+           LbiSituacao.setText(""); 
+       ButtonIniciar.setEnabled(true);
     }//GEN-LAST:event_ButtonPararActionPerformed
+
+    private void campoPortaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPortaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoPortaActionPerformed
+
+    private void ButtonSalvarMensagensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarMensagensActionPerformed
+              String texto = ButtonSalvarMensagens.getText(); 
+        lstPalavras.addAll(Arrays.asList(texto.split(";"))); 
+        ma.escreverArq(texto, "ListaPalavras", false);
+    }//GEN-LAST:event_ButtonSalvarMensagensActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,9 +294,18 @@ public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonIniciar;
     private javax.swing.JButton ButtonParar;
+    private javax.swing.JButton ButtonSalvarMensagens;
     private javax.swing.JTextField FuncionariosConectados;
+    private javax.swing.JLabel LbiSituacao;
+    private javax.swing.JTextArea ListaMensagens;
+    private javax.swing.JTextArea campoMensagens;
+    private javax.swing.JTextField campoPorta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
