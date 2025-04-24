@@ -20,54 +20,50 @@ import javax.swing.JTextField;
  */
 public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
 
-    private static Vector funcionarios;
-    private Socket conexao;
-    Thread t;
-    Dds_ManipularArquivo ma; 
-    private static ArrayList<String> lstPalavras;
+    private static Vector Dds_funcionarios;
+    private Socket Dds_conexao;
+    Thread Dds_t;
+    Dds_ManipularArquivo Dds_ma;
+    private static ArrayList<String> Dds_lstPalavras;
 
     public JLabel getLbiSituacao() {
-        return LbiSituacao; 
+        return LbiSituacao;
     }
+
     public JTextField getfuncionariosConectados() {
         return FuncionariosConectados;
     }
 
     public JTextArea getcampoMensagens() {
         return campoMensagens;
-        
+
     }
-       public void preencherPalavras() 
-    { 
-         
-        BufferedReader br = ma.lerArq("ListaPalavras"); 
-        if(br != null) 
-        { 
-            String texto = ""; 
-            try  
-            { 
-                while(br.ready()) 
-                {  
-                    texto = texto + br.readLine(); 
-                }           
-                ButtonSalvarMensagens.setText(texto); 
-                 
-                lstPalavras.addAll(Arrays.asList(texto.split(";"))); 
-                 
-            }  
-            catch (IOException ex)  
-            { 
-                ex.printStackTrace(); 
-            } 
-        } 
+
+    public void Dds_preencherPalavras() {
+
+        BufferedReader Dds_br = Dds_ma.Dds_lerArq("ListaPalavras");
+        if (Dds_br != null) {
+            String Dds_texto = "";
+            try {
+                while (Dds_br.ready()) {
+                    Dds_texto = Dds_texto + Dds_br.readLine();
+                }
+                ButtonSalvarMensagens.setText(Dds_texto);
+
+                Dds_lstPalavras.addAll(Arrays.asList(Dds_texto.split(";")));
+
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 
     public Dds_Servidor_Confeitaria_Formulario() {
         initComponents();
-        
-            ma = new Dds_ManipularArquivo(); 
-        lstPalavras = new ArrayList<String>(); 
-       // preencherPalavras();
+
+        Dds_ma = new Dds_ManipularArquivo();
+        Dds_lstPalavras = new ArrayList<String>();
+        Dds_preencherPalavras();
     }
 
     /**
@@ -232,18 +228,18 @@ public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonIniciarActionPerformed
-        funcionarios = new Vector();
+        Dds_funcionarios = new Vector();
         int porta = Integer.parseInt(campoPorta.getText());
-        t = new Dds_GerenciarConexao(this, funcionarios, porta, palavras);
-        t.start();
+        Dds_t = new Dds_GerenciarConexao(this, Dds_funcionarios, porta, Dds_palavras);
+        Dds_t.start();
         ButtonIniciar.setEnabled(false);
     }//GEN-LAST:event_ButtonIniciarActionPerformed
 
     private void ButtonPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPararActionPerformed
-        t.interrupt();
+        Dds_t.interrupt();
         FuncionariosConectados.setText("");
-           LbiSituacao.setText(""); 
-       ButtonIniciar.setEnabled(true);
+        LbiSituacao.setText("");
+        ButtonIniciar.setEnabled(true);
     }//GEN-LAST:event_ButtonPararActionPerformed
 
     private void campoPortaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPortaActionPerformed
@@ -251,9 +247,9 @@ public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
     }//GEN-LAST:event_campoPortaActionPerformed
 
     private void ButtonSalvarMensagensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarMensagensActionPerformed
-              String texto = ButtonSalvarMensagens.getText(); 
-        lstPalavras.addAll(Arrays.asList(texto.split(";"))); 
-        ma.escreverArq(texto, "ListaPalavras", false);
+        String Dds_texto = ButtonSalvarMensagens.getText();
+        Dds_lstPalavras.addAll(Arrays.asList(Dds_texto.split(";")));
+        Dds_ma.Dds_escreverArq(Dds_texto, "ListaPalavras", false);
     }//GEN-LAST:event_ButtonSalvarMensagensActionPerformed
 
     /**
