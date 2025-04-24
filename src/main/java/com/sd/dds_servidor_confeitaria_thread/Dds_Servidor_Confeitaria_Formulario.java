@@ -228,9 +228,9 @@ public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonIniciarActionPerformed
-        Dds_funcionarios = new Vector();
+       
         int porta = Integer.parseInt(campoPorta.getText());
-        Dds_t = new Dds_GerenciarConexao(this, Dds_funcionarios, porta, Dds_palavras);
+        Dds_t = new Dds_GerenciarConexao(this, Dds_funcionarios, porta, Dds_lstPalavras);
         Dds_t.start();
         ButtonIniciar.setEnabled(false);
     }//GEN-LAST:event_ButtonIniciarActionPerformed
