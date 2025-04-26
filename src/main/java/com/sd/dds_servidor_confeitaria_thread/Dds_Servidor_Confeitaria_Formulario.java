@@ -31,13 +31,13 @@ public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
     }
 
     public JTextField getfuncionariosConectados() {
-        return FuncionariosConectados;
+        return Dds_FuncionariosConectados;
     }
 
-    public JTextArea getcampoMensagens() {
+   /* public JTextArea getcampoMensagens() {
         return campoMensagens;
 
-    }
+    }*/
 
     public void Dds_preencherPalavras() {
 
@@ -48,7 +48,7 @@ public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
                 while (Dds_br.ready()) {
                     Dds_texto = Dds_texto + Dds_br.readLine();
                 }
-                ButtonSalvarMensagens.setText(Dds_texto);
+               // ButtonSalvarMensagens.setText(Dds_texto);
 
                 Dds_lstPalavras.addAll(Arrays.asList(Dds_texto.split(";")));
 
@@ -77,64 +77,55 @@ public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        ButtonIniciar = new javax.swing.JButton();
-        ButtonParar = new javax.swing.JButton();
+        Dds_ButtonIniciar = new javax.swing.JButton();
+        Dds_ButtonParar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        FuncionariosConectados = new javax.swing.JTextField();
-        campoPorta = new javax.swing.JTextField();
+        Dds_FuncionariosConectados = new javax.swing.JTextField();
+        Dds_campoPorta = new javax.swing.JTextField();
         LbiSituacao = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        campoMensagens = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
-        ButtonSalvarMensagens = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        ListaMensagens = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        Dds_CampoIP = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        Dds_CampoPorta = new javax.swing.JTextField();
+        Dds_ButtonConectar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Porta:");
 
-        ButtonIniciar.setText("Iniciar");
-        ButtonIniciar.addActionListener(new java.awt.event.ActionListener() {
+        Dds_ButtonIniciar.setText("Iniciar");
+        Dds_ButtonIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonIniciarActionPerformed(evt);
+                Dds_ButtonIniciarActionPerformed(evt);
             }
         });
 
-        ButtonParar.setText("Parar");
-        ButtonParar.addActionListener(new java.awt.event.ActionListener() {
+        Dds_ButtonParar.setText("Parar");
+        Dds_ButtonParar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonPararActionPerformed(evt);
+                Dds_ButtonPararActionPerformed(evt);
             }
         });
 
         jLabel2.setText("Funcionarios conctados:");
 
-        campoPorta.addActionListener(new java.awt.event.ActionListener() {
+        Dds_campoPorta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoPortaActionPerformed(evt);
+                Dds_campoPortaActionPerformed(evt);
             }
         });
 
-        campoMensagens.setColumns(20);
-        campoMensagens.setRows(5);
-        jScrollPane1.setViewportView(campoMensagens);
+        jLabel4.setText("Sincronização dos Servidores:");
 
-        jLabel3.setText("Filtrar palavras:");
+        jLabel5.setText("Conexão do servidor:");
 
-        ButtonSalvarMensagens.setText("Salvar Mensagens");
-        ButtonSalvarMensagens.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonSalvarMensagensActionPerformed(evt);
-            }
-        });
+        jLabel7.setText("IP:");
 
-        ListaMensagens.setColumns(20);
-        ListaMensagens.setRows(5);
-        jScrollPane2.setViewportView(ListaMensagens);
+        jLabel3.setText("Porta:");
 
-        jLabel4.setText("Mensagens:");
+        Dds_ButtonConectar.setText("Conectar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -142,116 +133,118 @@ public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(LbiSituacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(Dds_ButtonParar)))
+                .addGap(59, 59, 59))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(FuncionariosConectados, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(LbiSituacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campoPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                                .addComponent(ButtonIniciar)
-                                .addGap(34, 34, 34)
-                                .addComponent(ButtonParar)))
-                        .addGap(59, 59, 59))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(Dds_campoPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(Dds_ButtonIniciar)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Dds_FuncionariosConectados, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addComponent(jScrollPane2)))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Dds_CampoIP, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel3))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(141, 141, 141)
-                                .addComponent(ButtonSalvarMensagens)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(Dds_CampoPorta, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                                .addComponent(Dds_ButtonConectar)))))
+                .addGap(78, 78, 78))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(LbiSituacao)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(Dds_FuncionariosConectados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Dds_campoPorta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(Dds_ButtonIniciar)
+                            .addComponent(Dds_ButtonParar))))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(ButtonIniciar)
-                    .addComponent(ButtonParar)
-                    .addComponent(campoPorta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LbiSituacao)
-                .addGap(26, 26, 26)
+                    .addComponent(jLabel7)
+                    .addComponent(Dds_CampoIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FuncionariosConectados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ButtonSalvarMensagens)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(jLabel3)
+                    .addComponent(Dds_CampoPorta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Dds_ButtonConectar))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonIniciarActionPerformed
+    private void Dds_ButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dds_ButtonIniciarActionPerformed
        
-        int porta = Integer.parseInt(campoPorta.getText());
+        int porta = Integer.parseInt(Dds_campoPorta.getText());
         Dds_t = new Dds_GerenciarConexao(this, Dds_funcionarios, porta, Dds_lstPalavras);
         Dds_t.start();
-        ButtonIniciar.setEnabled(false);
-    }//GEN-LAST:event_ButtonIniciarActionPerformed
+        Dds_ButtonIniciar.setEnabled(false);
+    }//GEN-LAST:event_Dds_ButtonIniciarActionPerformed
 
-    private void ButtonPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPararActionPerformed
+    private void Dds_ButtonPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dds_ButtonPararActionPerformed
         Dds_t.interrupt();
-        FuncionariosConectados.setText("");
+        Dds_FuncionariosConectados.setText("");
         LbiSituacao.setText("");
-        ButtonIniciar.setEnabled(true);
-    }//GEN-LAST:event_ButtonPararActionPerformed
+        Dds_ButtonIniciar.setEnabled(true);
+    }//GEN-LAST:event_Dds_ButtonPararActionPerformed
 
-    private void campoPortaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPortaActionPerformed
+    private void Dds_campoPortaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dds_campoPortaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoPortaActionPerformed
-
-    private void ButtonSalvarMensagensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarMensagensActionPerformed
-        String Dds_texto = ButtonSalvarMensagens.getText();
-        Dds_lstPalavras.addAll(Arrays.asList(Dds_texto.split(";")));
-        Dds_ma.Dds_escreverArq(Dds_texto, "ListaPalavras", false);
-    }//GEN-LAST:event_ButtonSalvarMensagensActionPerformed
+    }//GEN-LAST:event_Dds_campoPortaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -289,20 +282,20 @@ public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonIniciar;
-    private javax.swing.JButton ButtonParar;
-    private javax.swing.JButton ButtonSalvarMensagens;
-    private javax.swing.JTextField FuncionariosConectados;
+    private javax.swing.JButton Dds_ButtonConectar;
+    private javax.swing.JButton Dds_ButtonIniciar;
+    private javax.swing.JButton Dds_ButtonParar;
+    private javax.swing.JTextField Dds_CampoIP;
+    private javax.swing.JTextField Dds_CampoPorta;
+    private javax.swing.JTextField Dds_FuncionariosConectados;
+    private javax.swing.JTextField Dds_campoPorta;
     private javax.swing.JLabel LbiSituacao;
-    private javax.swing.JTextArea ListaMensagens;
-    private javax.swing.JTextArea campoMensagens;
-    private javax.swing.JTextField campoPorta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
