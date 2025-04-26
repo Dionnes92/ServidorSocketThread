@@ -75,8 +75,8 @@ public class Dds_GerenciarMsgFuncionario extends Thread {
             }
         }
 
-        Dds_form.getcampoMensagens().setText(Dds_form.getcampoMensagens().getText() + "\n" + Dds_nomeFuncionario
-                + Dds_acao + Dds_linha);
+       // Dds_form.getcampoMensagens().setText(Dds_form.getcampoMensagens().getText() + "\n" + Dds_nomeFuncionario
+              //  + Dds_acao + Dds_linha);
 
         while (e.hasMoreElements()) {
             PrintStream Dds_chat = (PrintStream) e.nextElement();
