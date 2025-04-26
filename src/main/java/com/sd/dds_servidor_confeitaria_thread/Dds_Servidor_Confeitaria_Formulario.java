@@ -19,7 +19,8 @@ import javax.swing.JTextField;
  * @author Dionnes
  */
 public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
-
+    
+    private Dds_GerenciarConexao Dds_G;
     private static Vector Dds_funcionarios;
     private Socket Dds_conexao;
     Thread Dds_t;
@@ -236,6 +237,12 @@ public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
     }//GEN-LAST:event_Dds_ButtonIniciarActionPerformed
 
     private void Dds_ButtonPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dds_ButtonPararActionPerformed
+        
+           if (Dds_G != null) {
+          
+            Dds_G = null;
+        }
+        Dds_funcionarios.clear();;
         Dds_t.interrupt();
         Dds_FuncionariosConectados.setText("");
         LbiSituacao.setText("");
