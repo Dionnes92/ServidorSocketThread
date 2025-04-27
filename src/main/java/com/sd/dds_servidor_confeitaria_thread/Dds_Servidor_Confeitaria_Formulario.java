@@ -35,10 +35,7 @@ public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
         return Dds_FuncionariosConectados;
     }
 
-   /* public JTextArea getcampoMensagens() {
-        return campoMensagens;
-
-    }*/
+  
 
     public void Dds_preencherPalavras() {
 
