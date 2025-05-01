@@ -244,6 +244,7 @@ public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
         Dds_FuncionariosConectados.setText("");
         LbiSituacao.setText("");
         Dds_ButtonIniciar.setEnabled(false);
+        System.out.println("Conexão encerrada!!!");
     }//GEN-LAST:event_Dds_ButtonPararActionPerformed
 
     private void Dds_campoPortaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dds_campoPortaActionPerformed
