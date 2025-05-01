@@ -39,14 +39,14 @@ public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
 
     public void Dds_preencherPalavras() {
 
-        BufferedReader Dds_br = Dds_ma.Dds_lerArq("ListaPalavras");
+        BufferedReader Dds_br = Dds_ma.Dds_lerArq("Dds_Bolos");
         if (Dds_br != null) {
             String Dds_texto = "";
             try {
                 while (Dds_br.ready()) {
                     Dds_texto = Dds_texto + Dds_br.readLine();
                 }
-               // ButtonSalvarMensagens.setText(Dds_texto);
+               //ButtonSalvarMensagens.setText(Dds_texto);
 
                 Dds_lstPalavras.addAll(Arrays.asList(Dds_texto.split(";")));
 
@@ -230,7 +230,7 @@ public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
         int porta = Integer.parseInt(Dds_campoPorta.getText());
         Dds_t = new Dds_GerenciarConexao(this, Dds_funcionarios, porta, Dds_lstPalavras);
         Dds_t.start();
-        Dds_ButtonIniciar.setEnabled(false);
+        Dds_ButtonIniciar.setEnabled(true);
     }//GEN-LAST:event_Dds_ButtonIniciarActionPerformed
 
     private void Dds_ButtonPararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dds_ButtonPararActionPerformed
@@ -239,11 +239,11 @@ public class Dds_Servidor_Confeitaria_Formulario extends javax.swing.JFrame {
           
             Dds_G = null;
         }
-        Dds_funcionarios.clear();;
+        Dds_funcionarios.clear();
         Dds_t.interrupt();
         Dds_FuncionariosConectados.setText("");
         LbiSituacao.setText("");
-        Dds_ButtonIniciar.setEnabled(true);
+        Dds_ButtonIniciar.setEnabled(false);
     }//GEN-LAST:event_Dds_ButtonPararActionPerformed
 
     private void Dds_campoPortaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dds_campoPortaActionPerformed
