@@ -18,11 +18,11 @@ import java.io.PrintWriter;
 public class Dds_ManipularArquivo {
     
     
-       public void Dds_escreverArq(String Dds_texto, String Dds_nomeArq, boolean Dds_manter) 
+       public void Dds_escreverArq(String Dds_texto, String Dds_Bolos, boolean Dds_manter) 
     { 
         try 
         { 
-            File Dds_f = new File("c:\\"+Dds_nomeArq+".txt"); 
+            File Dds_f = new File("c:\\"+Dds_Bolos+".txt"); 
  
             FileWriter Dds_fw = new FileWriter(Dds_f,Dds_manter); 
             PrintWriter pw = new PrintWriter(Dds_fw); 
